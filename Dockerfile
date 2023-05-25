@@ -10,3 +10,10 @@ VOLUME /tmp
 EXPOSE 8080
 COPY --from=build /home/app/target/*.jar app.jar
 ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar" ]
+
+
+FROM openjdk:13
+VOLUME /tmp
+EXPOSE 8080
+ADD ./FirstDevopsJob-0.0.1-SNAPSHOT.jar  devops.jar
+ENTRYPOINT ["java","-jar","/devops.jar"]
